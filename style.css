@@ -1,110 +1,49 @@
-/* RESET */
-
-html, body {
-    height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-
+/* =========================================
+   1. RESET & BASES
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
+/* --- NOUVEAU BLOC BODY (Remplace l'ancien) --- */
 body {
     font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color: #222;
+    color: white; /* Texte blanc par défaut pour le fond sombre */
     line-height: 1.6;
-}
-
-/* HEADER */
-header {
-    background: #111;
-    color: white;
-    padding: 20px 40px;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.home-menu {
+    flex-direction: column;
+    background: #0a0f24; /* Couleur de base sombre  */
     position: relative;
-    z-index: 2; /* boutons au-dessus du fond animé */
-
-    height: 85vh;
-    display: grid;
-
-    grid-template-columns: repeat(3, auto); /* colonnes serrées */
-    gap: 30px;
-
-    padding: 40px;
-
-    /* ❌ On enlève tout fond bleu */
-    background: none;
-    backdrop-filter: none;
-
-    /* ✔ Resserre verticalement */
-    align-content: center;
-
-    /* ✔ Centre horizontalement */
-    justify-items: center;
-
-    /* ✔ Resserre horizontalement */
-    max-width: 1000px;
-    margin: 0 auto;
 }
 
-
-header nav a {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-header {
-    background: rgba(0, 170, 255, 0.25); /* bleu transparent */
-    backdrop-filter: blur(6px);          /* effet verre dépoli */
-    -webkit-backdrop-filter: blur(6px);
-    color: white;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-
-/* HERO ANIMÉ STYLE DATA SCIENCE */
-.hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-    background: #0a0f24; /* bleu nuit discret */
-}
-
-/* Petits points animés */
-.hero::before {
+/* --- LE FOND ANIMÉ (Sur toute la page, fixe) --- */
+body::before, body::after {
     content: "";
-    position: absolute;
-    inset: 0;
+    position: fixed; /* Reste collé à l'écran même si on scrolle */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Derrière tout le contenu */
+}
+
+body::before {
     background: radial-gradient(circle, rgba(0,170,255,0.6) 2px, transparent 2px);
     background-size: 40px 40px;
     opacity: 0.4;
     animation: moveDots 12s linear infinite;
 }
 
-/* Lignes animées façon réseau */
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+body::after {
     background: linear-gradient(120deg, rgba(0,170,255,0.25) 1px, transparent 1px),
                 linear-gradient(60deg, rgba(0,170,255,0.25) 1px, transparent 1px);
     background-size: 80px 80px;
@@ -112,191 +51,280 @@ header {
     animation: moveGrid 18s linear infinite;
 }
 
-/* Animation des points */
-@keyframes moveDots {
-    from { background-position: 0 0; }
-    to { background-position: 200px 200px; }
-}
-
-/* Animation du réseau */
-@keyframes moveGrid {
-    from { background-position: 0 0; }
-    to { background-position: 300px 300px; }
-}
-
-
-
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 20px;
-    background: #00aaff;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-}
-
-/* SECTIONS */
-.section {
-    padding: 60px 40px;
-    max-width: 1000px;
-    margin: auto;
-}
-
-.section h2 {
-    margin-bottom: 20px;
-    font-size: 28px;
-}
-
-/* GRID COMPETENCES */
-.grid {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-/* CARDS */
+/* --- ADAPTATION DES CARTES (Pour qu'elles soient lisibles) --- */
 .card {
-    background: white;
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.05); /* Effet de transparence vitre [cite: 39] */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: white;
     width: 100%;
+    margin-bottom: 20px;
 }
 
-.card h3 {
-    margin-bottom: 10px;
+/* --- SECTIONS (Adaptables à l'écran) --- */
+.page, .section {
+    flex: 1;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 5%; /* S'adapte à la largeur de l'ordi  */
 }
 
-/* FOOTER */
+/* --- FOOTER (Sans bandeau) --- */
 footer {
-    margin-top: auto; /* pousse le footer en bas */
     text-align: center;
-    padding: 20px;
-    background: rgba(0, 170, 255, 0.25);
+    padding: 30px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+    border: none;
+}
+
+/* Images et tableaux adaptatifs */
+img, table {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================================
+   2. HEADER & NAVIGATION
+   ========================================= */
+header {
+    background: rgba(0, 170, 255, 0.25); /* bleu transparent */
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     color: white;
-    border-top: 2px solid rgba(0, 170, 255, 0.4);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 10;
 }
 
+header h1 {
+    font-size: 1.5rem;
+}
 
-
-
-
-
-
-/* BOUTONS ANIMÉS POUR LA PAGE D'ACCUEIL */
-.btn-home {
-    position: relative;
+/* Bouton de retour unique */
+.btn-back {
     display: inline-block;
-    padding: 14px 28px;
-    margin: 15px;
-    font-size: 18px;
-    font-weight: bold;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.15);
     color: white;
     text-decoration: none;
-    border-radius: 10px;
-    background: rgba(0, 170, 255, 0.4);
-    border: 2px solid rgba(0, 170, 255, 0.7);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: bold;
+    transition: 0.3s ease;
     backdrop-filter: blur(4px);
-    transition: 0.35s ease;
-    overflow: hidden;
 }
 
-/* Effet zoom + glow */
-.btn-home:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px rgba(0, 170, 255, 0.7);
+.btn-back:hover {
+    background: rgba(0, 170, 255, 0.5);
     border-color: white;
+    transform: translateX(-5px);
 }
 
-.title-double {
-    display: inline-block;
-    padding: 12px 28px;
-    border: 4px double #007acc; /* bleu plus doux */
-    border-radius: 12px;
-    font-size: 32px;
-    font-weight: bold;
-    color: white; /* texte blanc */
-    background: rgba(0, 140, 255, 0.7); /* bleu clair */
+/* =========================================
+   3. ACCUEIL (HERO & MENU GRID)
+   ========================================= */
+.hero {
     position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: #0a0f24; /* bleu nuit */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-
-/* TITRES SIMPLES BLEUS */
-.title-double {
-    display: inline-block;
-    padding: 12px 28px;
-    background: #0099ff; /* bleu clair */
-    color: white;        /* texte blanc */
-    border: 4px double #007acc; /* double bordure élégante */
-    border-radius: 12px;
-    font-size: 32px;
-    font-weight: bold;
-}
-
-/* Effet vague lumineuse */
-.btn-home::after {
+/* Animations de fond (Points et Grille) */
+.hero::before, .hero::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: -120%;
-    width: 120%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
-    );
-    transition: 0.5s ease;
+    inset: 0;
 }
 
-.btn-home:hover::after {
-    left: 120%;
+.hero::before {
+    background: radial-gradient(circle, rgba(0,170,255,0.6) 2px, transparent 2px);
+    background-size: 40px 40px;
+    opacity: 0.4;
+    animation: moveDots 12s linear infinite;
 }
 
-/* STYLE DES BOUTONS */
-.menu-btn {
+.hero::after {
+    background: linear-gradient(120deg, rgba(0,170,255,0.25) 1px, transparent 1px),
+                linear-gradient(60deg, rgba(0,170,255,0.25) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.25;
+    animation: moveGrid 18s linear infinite;
+}
+
+@keyframes moveDots { from { background-position: 0 0; } to { background-position: 200px 200px; } }
+@keyframes moveGrid { from { background-position: 0 0; } to { background-position: 300px 300px; } }
+
+.home-title {
     position: relative;
+    margin-bottom: 40px;
+    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Taille adaptative */
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
     z-index: 3;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.home-menu {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 90%;
+    max-width: 1000px;
+    justify-items: center;
+}
+
+.menu-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    width: 220px;      /* largeur identique */
-    height: 80px;      /* hauteur identique */
-
-    text-align: center;
-    padding: 0;        /* on enlève le padding pour éviter les variations */
-    font-size: 22px;
+    width: 220px;
+    height: 80px;
+    font-size: 1.2rem;
     font-weight: bold;
     text-decoration: none;
     color: white;
-
     background: rgba(0, 140, 255, 0.6);
     border: 3px solid rgba(255, 255, 255, 0.4);
     border-radius: 12px;
     transition: 0.3s ease;
+    backdrop-filter: blur(4px);
 }
 
-
-/* Effet hover léger (pas d’animation flashy) */
 .menu-btn:hover {
     background: rgba(0, 140, 255, 0.8);
     border-color: white;
     transform: translateY(-4px);
 }
-.home-title {
-    position: absolute;
-    top: 80px; /* au lieu de 30px */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 36px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
-    z-index: 3;
+
+/* =========================================
+   4. SECTIONS DE CONTENU (PAGES)
+   ========================================= */
+.page, .section {
+    flex: 1;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 5%; /* Marge dynamique sur les côtés */
 }
 
+.title-double {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #0099ff;
+    color: white;
+    border: 4px double #007acc;
+    border-radius: 12px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    /*box-shadow: 0 0 15px rgba(0, 170, 255, 0.3); /* Ajoute un léger halo bleu */
+}
+
+.card {
+    /* On remplace le blanc par un noir/bleu très transparent */
+    background: rgba(255, 255, 255, 0.05); 
+    
+    /* L'effet de flou pour le côté "vitre" moderne */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Une bordure fine pour délimiter la carte sans l'alourdir */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    padding: 25px;
+    border-radius: 12px;
+    width: 100%;
+    margin-bottom: 25px;
+    
+    /* On s'assure que tout le texte à l'intérieur est blanc */
+    color: white; 
+    transition: 0.3s ease;
+}
+
+/* Petit effet au survol pour rendre la page interactive */
+.card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    border-color: rgba(0, 170, 255, 0.5);
+}
+/* =========================================
+   5. FOOTER (MINIMALISTE)
+   ========================================= */
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 40px 20px; /* Plus d'espace pour que ce ne soit pas étouffé */
+    background: transparent; 
+    color: rgba(120, 120, 120, 0.4); /* Texte très discret, presque fondu dans le fond */
+    font-size: 13px;
+    border: none; /* On supprime la ligne du haut qui fait l'effet bandeau */
+}
+
+/* Ajustement footer pour la page d'accueil sombre */
+.hero + footer {
+    color: rgba(255, 255, 255, 0.4);
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================
+   6. RESPONSIVE DESIGN (BREAKPOINTS)
+   ========================================= */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+    .home-menu {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .menu-btn {
+        width: 100%;
+        max-width: 200px;
+        font-size: 1rem;
+    }
+}
+
+/* Mobiles */
+@media (max-width: 600px) {
+    header {
+        flex-direction: row; /* Garde titre et bouton côte à côte */
+        padding: 10px 20px;
+    }
+
+    header h1 { font-size: 1.1rem; }
+
+    .home-menu {
+        grid-template-columns: 1fr; /* 1 bouton par ligne */
+        height: auto;
+        padding-bottom: 40px;
+    }
+
+    .menu-btn {
+        width: 100%;
+        max-width: 280px;
+        height: 65px;
+    }
+
+    .title-double {
+        font-size: 1.4rem;
+        padding: 8px 15px;
+    }
+}
