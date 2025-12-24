@@ -1,0 +1,302 @@
+/* RESET */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background: #111;
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-menu {
+    position: relative;
+    z-index: 2; /* boutons au-dessus du fond animé */
+
+    height: 85vh;
+    display: grid;
+
+    grid-template-columns: repeat(3, auto); /* colonnes serrées */
+    gap: 30px;
+
+    padding: 40px;
+
+    /* ❌ On enlève tout fond bleu */
+    background: none;
+    backdrop-filter: none;
+
+    /* ✔ Resserre verticalement */
+    align-content: center;
+
+    /* ✔ Centre horizontalement */
+    justify-items: center;
+
+    /* ✔ Resserre horizontalement */
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+header nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header {
+    background: rgba(0, 170, 255, 0.25); /* bleu transparent */
+    backdrop-filter: blur(6px);          /* effet verre dépoli */
+    -webkit-backdrop-filter: blur(6px);
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+/* HERO ANIMÉ STYLE DATA SCIENCE */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: #0a0f24; /* bleu nuit discret */
+}
+
+/* Petits points animés */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0,170,255,0.6) 2px, transparent 2px);
+    background-size: 40px 40px;
+    opacity: 0.4;
+    animation: moveDots 12s linear infinite;
+}
+
+/* Lignes animées façon réseau */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(0,170,255,0.25) 1px, transparent 1px),
+                linear-gradient(60deg, rgba(0,170,255,0.25) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.25;
+    animation: moveGrid 18s linear infinite;
+}
+
+/* Animation des points */
+@keyframes moveDots {
+    from { background-position: 0 0; }
+    to { background-position: 200px 200px; }
+}
+
+/* Animation du réseau */
+@keyframes moveGrid {
+    from { background-position: 0 0; }
+    to { background-position: 300px 300px; }
+}
+
+
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #00aaff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+/* SECTIONS */
+.section {
+    padding: 60px 40px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+/* GRID COMPETENCES */
+.grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* CARDS */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+footer {
+    margin-top: auto; /* pousse le footer en bas */
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 170, 255, 0.25);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: white;
+    border-top: 2px solid rgba(0, 170, 255, 0.4);
+}
+
+
+
+
+
+
+
+/* BOUTONS ANIMÉS POUR LA PAGE D'ACCUEIL */
+.btn-home {
+    position: relative;
+    display: inline-block;
+    padding: 14px 28px;
+    margin: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    background: rgba(0, 170, 255, 0.4);
+    border: 2px solid rgba(0, 170, 255, 0.7);
+    backdrop-filter: blur(4px);
+    transition: 0.35s ease;
+    overflow: hidden;
+}
+
+/* Effet zoom + glow */
+.btn-home:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.7);
+    border-color: white;
+}
+
+.title-double {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 4px double #007acc; /* bleu plus doux */
+    border-radius: 12px;
+    font-size: 32px;
+    font-weight: bold;
+    color: white; /* texte blanc */
+    background: rgba(0, 140, 255, 0.7); /* bleu clair */
+    position: relative;
+}
+
+
+/* TITRES SIMPLES BLEUS */
+.title-double {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #0099ff; /* bleu clair */
+    color: white;        /* texte blanc */
+    border: 4px double #007acc; /* double bordure élégante */
+    border-radius: 12px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Effet vague lumineuse */
+.btn-home::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: 0.5s ease;
+}
+
+.btn-home:hover::after {
+    left: 120%;
+}
+
+/* STYLE DES BOUTONS */
+.menu-btn {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 220px;      /* largeur identique */
+    height: 80px;      /* hauteur identique */
+
+    text-align: center;
+    padding: 0;        /* on enlève le padding pour éviter les variations */
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+
+    background: rgba(0, 140, 255, 0.6);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    transition: 0.3s ease;
+}
+
+
+/* Effet hover léger (pas d’animation flashy) */
+.menu-btn:hover {
+    background: rgba(0, 140, 255, 0.8);
+    border-color: white;
+    transform: translateY(-4px);
+}
+.home-title {
+    position: absolute;
+    top: 80px; /* au lieu de 30px */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
+    z-index: 3;
+}
+
