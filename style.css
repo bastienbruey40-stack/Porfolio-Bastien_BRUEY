@@ -648,3 +648,83 @@ footer {
     background: rgba(0, 119, 181, 0.3); /* Bleu LinkedIn */
     border-color: #0077b5;
 }
+
+.project-link {
+    text-decoration: none; /* Enlève le soulignement bleu des liens */
+    color: inherit;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.project-link:hover .project-card {
+    background: rgba(0, 170, 255, 0.1);
+    border-color: #00aaff;
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+/* Style pour la boîte de code dans les pages détails */
+.code-box {
+    background: #010409;
+    padding: 15px;
+    border-radius: 8px;
+    color: #79c0ff;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    margin-top: 10px;
+}
+
+.large-img {
+    width: 100%;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+/* Pour un défilement fluide vers l'ID */
+html {
+    scroll-behavior: smooth;
+}
+
+.detail-section {
+    margin-bottom: 100px; /* Espace entre les projets pour bien les séparer */
+    padding-top: 20px;
+}
+
+.separator {
+    border: 0;
+    height: 1px;
+    background: rgba(0, 170, 255, 0.2);
+    margin: 50px 0;
+}
+
+.project-detail {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.detail-grid {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .detail-grid { flex-direction: column; }
+}
+
+/* Change le curseur en main quand on survole un projet */
+.project-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #00aaff;
+    background: rgba(0, 170, 255, 0.08); /* Légère coloration au survol */
+}
