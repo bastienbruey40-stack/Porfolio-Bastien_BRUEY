@@ -1,6 +1,33 @@
 /* ===== Données détaillées des projets ===== */
 const PROJECTS = [
     {
+        title: "EduPulse — Plateforme Cloud SaaS de Learning Analytics",
+        tool: "Docker Swarm, Nginx, PostgreSQL, xAPI (LRS) & Grafana",
+        period: "Master 1 SIGLIS · UPPA Anglet · 2026",
+        category: ["web", "data"],
+        img: "edupulse.jpg",
+        imgTop: true,
+        link: "https://edupulse.mnbll.fr/",
+        linkLabel: "Accéder à EduPulse (edupulse.mnbll.fr) ↗",
+        short: "Plateforme SaaS multi-tenant conteneurisée de Learning Analytics centralisant les traces d'apprentissage (xAPI) pour détecter précocement le décrochage scolaire.",
+        highlights: [
+            "Architecture Cloud multi-tenant orchestrée sous Docker Swarm & Nginx",
+            "Collecte standardisée xAPI (LRS), stockage PostgreSQL & provisionnement automatisé",
+            "Tableaux de bord décisionnels Grafana (assiduité, progression, alertes décrochage)"
+        ],
+        context: "Dans l'enseignement supérieur et secondaire, les traces d'apprentissage des étudiants sont souvent dispersées sur plusieurs outils (LMS, plateformes d'exercices, ressources numériques), ce qui complique le suivi global de leur engagement et la détection précoce du décrochage scolaire. L'objectif du projet EduPulse était de concevoir et déployer une plateforme SaaS de Learning Analytics capable de centraliser ces données pédagogiques à grande échelle tout en respectant les standards du Cloud Computing (référentiel NIST : élasticité, accès réseau large, mutualisation des ressources et isolation).",
+        desc: [
+            "<strong>Orchestration & Haute Disponibilité (Docker Swarm)</strong> : Le cluster est géré sous Docker Swarm afin d'assurer le déploiement, la scalabilité horizontale et la résilience des services.",
+            "<strong>Routage & Sécurité (Nginx)</strong> : Un reverse proxy Nginx gère les points d'entrée, le routage dynamique vers les instances de chaque établissement et la sécurisation des flux.",
+            "<strong>Collecte Standardisée (LRS & xAPI)</strong> : Les interactions des étudiants (connexions, rendus, consultations, résultats) sont captées sous le format standard xAPI (Experience API) et centralisées dans un Learning Record Store (LRS).",
+            "<strong>Stockage Relationnel (PostgreSQL)</strong> : Une base de données PostgreSQL assure la persistance, la structuration et l'intégrité des traces d'apprentissage et des données métiers.",
+            "<strong>Provisionnement Automatisé</strong> : Lorsqu'un nouvel établissement rejoint la plateforme, un mécanisme automatisé déploie dynamiquement une stack Docker dédiée et cloisonnée, garantissant une isolation stricte des données entre chaque client (tenant).",
+            "<strong>Restitution & Tableaux de Bord (Grafana)</strong> : Des dashboards analytiques sous Grafana exploitent les données PostgreSQL pour offrir aux équipes pédagogiques une vue claire sur l'assiduité, la progression des cohortes et les indicateurs d'alerte liés au décrochage."
+        ],
+        result: "Architecture Cloud SaaS multi-tenant conforme au référentiel NIST. Compétences mobilisées — Cloud & DevOps : Docker, Docker Swarm, Nginx, architecture multi-tenant, provisionnement automatisé · Data & Normes : PostgreSQL, xAPI (LRS), Learning Analytics · Visualisation & Décisionnel : Grafana, conception de KPI et d'alertes.",
+        tags: ["Docker Swarm", "Nginx", "PostgreSQL", "xAPI (LRS)", "Grafana", "Cloud SaaS", "Multi-tenant"]
+    },
+    {
         title: "Outils Web & Automatisation Industrielle – EGGER Panneaux & Décors",
         tool: "HTML, CSS, JavaScript & Excel VBA",
         period: "Alternance · Sept. 2025 – Août 2026",
@@ -171,7 +198,7 @@ function renderProjects(filter = "all") {
         el.tabIndex = 0;
         const bullets = (p.highlights || []).map(h => `<li>${h}</li>`).join("");
         el.innerHTML = `
-            <div class="project-img ${p.imgContain ? 'contain' : ''}">
+            <div class="project-img ${p.imgContain ? 'contain' : ''} ${p.imgTop ? 'top' : ''}">
                 <img src="${p.img}" alt="${p.title}" loading="lazy">
                 <span class="project-num">0${i + 1}</span>
                 <span class="project-period">${p.period}</span>
@@ -182,8 +209,16 @@ function renderProjects(filter = "all") {
                 <p>${p.short}</p>
                 <ul class="project-highlights">${bullets}</ul>
                 <div class="chips project-chips">${p.tags.slice(0, 4).map(t => `<span>${t}</span>`).join("")}</div>
-                <span class="more">Voir la fiche détaillée →</span>
+                <div class="project-footer">
+                    <span class="more">Voir la fiche détaillée →</span>
+                    ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener noreferrer" class="project-ext-link">🌐 Site en ligne ↗</a>` : ""}
+                </div>
             </div>`;
+        const extLink = el.querySelector(".project-ext-link");
+        if (extLink) {
+            extLink.addEventListener("click", e => e.stopPropagation());
+            extLink.addEventListener("keydown", e => e.stopPropagation());
+        }
         el.addEventListener("click", () => openModal(i));
         el.addEventListener("keydown", e => { if (e.key === "Enter") openModal(i); });
         grid.appendChild(el);
@@ -214,6 +249,10 @@ function openModal(i) {
     $("#m-desc").innerHTML = "<ul>" + p.desc.map(d => `<li>${d}</li>`).join("") + "</ul>";
     $("#m-result").textContent = p.result;
     $("#m-tags").innerHTML = p.tags.map(t => `<span>${t}</span>`).join("");
+    const actions = $("#m-actions");
+    actions.innerHTML = p.link
+        ? `<a href="${p.link}" target="_blank" rel="noopener noreferrer" class="btn">🌐 ${p.linkLabel || "Visiter la plateforme ↗"}</a>`
+        : "";
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
