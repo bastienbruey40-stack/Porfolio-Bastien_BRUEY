@@ -251,8 +251,8 @@ function countUp() {
 /* ===== Texte tapé ===== */
 const words = [
     "Alternant chez EGGER Panneaux & Décors",
-    "BUT Science des Données (Parcours VCOD)",
-    "Futur Master SIGLIS (2026 – 2028)",
+    "Étudiant en Master 1 SIGLIS",
+    "BUT Science des Données (VCOD)",
     "Passionné de Football & Data"
 ];
 let w = 0, c = 0, del = false;
