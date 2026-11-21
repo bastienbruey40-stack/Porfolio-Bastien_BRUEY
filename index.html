@@ -3,31 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil – Portfolio Bastien</title>
+    <title>Bastien BRUEY – Portfolio</title>
+    <meta name="description" content="Portfolio de Bastien Bruey, étudiant en BUT Science des Données, futur Master SIGLIS en alternance.">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<section class="hero">
-    <div class="hero-badge">BUT Science des Données · UPPA</div>
-    <div class="home-title">Bastien BRUEY</div>
-    <p class="hero-subtitle">Étudiant en science des données, passionné de football, de statistiques et de nouvelles technologies.</p>
-    <div class="home-menu">
-        <a href="presentation.html" class="menu-btn">Présentation</a>
-        <a href="formation.html" class="menu-btn">Formation</a>
-        <a href="competences.html" class="menu-btn">Compétences</a>
-        <a href="projets.html" class="menu-btn">Projets</a>
-        <a href="parcours.html" class="menu-btn">Parcours Pro</a>
-        <a href="contact.html" class="menu-btn">Contact</a>
+<div class="progress"><span id="progress-bar"></span></div>
+<div class="cursor-glow" id="glow"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+    <a href="#accueil" class="brand">BB<span>.</span></a>
+    <nav class="nav-links" id="nav-links">
+        <a href="#presentation">Présentation</a>
+        <a href="#formation">Formation</a>
+        <a href="#competences">Compétences</a>
+        <a href="#projets">Projets</a>
+        <a href="#parcours">Parcours</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <a href="Bastien_BRUEY_CV.pdf" target="_blank" class="btn btn-small">CV&nbsp;↓</a>
+    <button class="burger" id="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="accueil">
+    <div class="hero-inner">
+        <div class="hero-badge reveal">Disponible · Alternance 2026 – 2028</div>
+        <h1 class="hero-title reveal">Bastien<br><span class="grad">BRUEY</span></h1>
+        <p class="hero-role reveal">Étudiant en <strong>Science des Données</strong> · <span id="typed" class="typed"></span><span class="caret">|</span></p>
+        <p class="hero-text reveal">Je transforme des données brutes en informations stratégiques, avec l'ambition de lier ma passion du sport à mon expertise technique.</p>
+        <div class="hero-cta reveal">
+            <a href="#projets" class="btn">Voir mes projets</a>
+            <a href="#contact" class="btn btn-ghost">Me contacter</a>
+        </div>
+        <div class="stats reveal">
+            <div><b data-count="4">0</b><span>Projets</span></div>
+            <div><b data-count="2">0</b><span>Diplômes visés</span></div>
+            <div><b data-count="5">0</b><span>Ans d'études</span></div>
+        </div>
+    </div>
+    <a href="#presentation" class="scroll-hint" aria-label="Défiler"><i></i></a>
+</section>
+
+<!-- ============ PRÉSENTATION ============ -->
+<section class="section" id="presentation">
+    <div class="wrap">
+        <p class="eyebrow reveal">01 — Présentation</p>
+        <h2 class="section-title reveal">Qui suis-je ?</h2>
+        <div class="about">
+            <div class="about-photo reveal from-left">
+                <div class="photo-ring"><img src="photo.jpeg" alt="Photo de Bastien Bruey"></div>
+                <a href="Bastien_BRUEY_CV.pdf" target="_blank" class="btn">📄 Télécharger mon CV</a>
+            </div>
+            <div class="about-text reveal from-right">
+                <p>Je m'appelle <strong>Bastien Bruey</strong>, j'ai 18 ans. Passionné de football depuis mes 6 ans, j'ai développé des valeurs comme la <strong>discipline</strong>, l'<strong>esprit d'équipe</strong> et la <strong>persévérance</strong>.</p>
+                <p>Actuellement en <strong>BUT Science des Données</strong>, j'apprends à transformer des données brutes en informations stratégiques. Mon but ultime : lier ma passion du sport à mon expertise technique.</p>
+                <h3 class="mini-title">Mes passions</h3>
+                <div class="passions">
+                    <div class="glass tilt">⚽<span>Football</span><small>Pratique et analyse</small></div>
+                    <div class="glass tilt">📊<span>Statistiques & Data</span><small>Comprendre par les chiffres</small></div>
+                    <div class="glass tilt">🖥️<span>Nouvelles technologies</span><small>Veille & curiosité</small></div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
+<!-- ============ FORMATION ============ -->
+<section class="section" id="formation">
+    <div class="wrap">
+        <p class="eyebrow reveal">02 — Formation</p>
+        <h2 class="section-title reveal">Mon parcours académique</h2>
+        <div class="v-timeline">
 
+            <article class="vt-item reveal">
+                <span class="vt-dot"></span>
+                <div class="glass vt-card tilt">
+                    <div class="vt-head">
+                        <div>
+                            <span class="date">2026 – 2028</span>
+                            <h3>Master SIGLIS</h3>
+                            <p class="sub">Université de Pau et des Pays de l'Adour (UPPA)</p>
+                        </div>
+                        <img src="logo_uppa.png" alt="Logo UPPA" class="logo">
+                    </div>
+                    <p>Formation de deux ans réalisée <strong>en alternance au sein de l'entreprise Panneaux et Décors</strong>.</p>
+                    <div class="chips"><span>💼 Alternance · Panneaux et Décors</span><span>📅 2 ans</span><span>🎓 Bac+5</span></div>
+                </div>
+            </article>
+
+            <article class="vt-item reveal">
+                <span class="vt-dot"></span>
+                <div class="glass vt-card tilt">
+                    <div class="vt-head">
+                        <div>
+                            <span class="date">2023 – 2026</span>
+                            <h3>BUT Science des Données</h3>
+                            <p class="sub">IUT des Pays de l'Adour · Campus de Pau</p>
+                        </div>
+                        <img src="logo_SD.png" alt="Logo IUT" class="logo">
+                    </div>
+                    <p>Trois ans mêlant <strong>statistiques, informatique décisionnelle et gestion</strong>, avec une <strong>3ème année en alternance</strong>.</p>
+                    <div class="chips"><span>📍 Pau</span><span>💼 3ème année en alternance</span><span>🎓 Bac+3</span></div>
+                </div>
+            </article>
+
+            <article class="vt-item reveal">
+                <span class="vt-dot"></span>
+                <div class="glass vt-card tilt">
+                    <div class="vt-head">
+                        <div>
+                            <span class="date">Établissement</span>
+                            <h3>Université de Pau (UPPA)</h3>
+                        </div>
+                        <img src="logo_uppa.png" alt="Logo UPPA" class="logo">
+                    </div>
+                    <p>Une université d'excellence, lauréate du label <strong>I-SITE</strong>.</p>
+                    <div class="chips"><span>Label I-SITE</span><span>Excellence IDEX</span></div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============ COMPÉTENCES ============ -->
+<section class="section" id="competences">
+    <div class="wrap">
+        <p class="eyebrow reveal">03 — Compétences</p>
+        <h2 class="section-title reveal">Ma boîte à outils</h2>
+        <div class="skills-grid">
+            <div class="glass skill-card tilt reveal">
+                <div class="skill-icon">📈</div>
+                <h3>Analyse Statistique</h3>
+                <div class="chips">
+                    <span>Statistiques descriptives</span><span>Probabilités</span><span>Estimation d'échantillon</span>
+                    <span>Algèbre</span><span>Statistiques inférentielles</span><span>Régression</span>
+                </div>
+            </div>
+            <div class="glass skill-card tilt reveal">
+                <div class="skill-icon">💻</div>
+                <h3>Informatique & Data</h3>
+                <div class="chips"><span>Python</span><span>R</span><span>SQL</span><span>VBA</span><span>NoSQL</span></div>
+            </div>
+            <div class="glass skill-card tilt reveal">
+                <div class="skill-icon">📊</div>
+                <h3>Outils BI & Pro</h3>
+                <div class="chips"><span>Excel</span><span>Power BI</span><span>QlikView</span><span>Communication</span><span>Anglais (B1)</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PROJETS ============ -->
+<section class="section" id="projets">
+    <div class="wrap">
+        <p class="eyebrow reveal">04 — Projets</p>
+        <h2 class="section-title reveal">Mes réalisations</h2>
+        <p class="section-lead reveal">Clique sur un projet pour en voir les détails.</p>
+        <div class="projects" id="projects"></div>
+    </div>
+</section>
+
+<!-- ============ PARCOURS PRO ============ -->
+<section class="section" id="parcours">
+    <div class="wrap">
+        <p class="eyebrow reveal">05 — Projet professionnel</p>
+        <h2 class="section-title reveal">Où je vais</h2>
+        <div class="roadmap">
+            <div class="road-step reveal">
+                <span class="road-num">01</span>
+                <div class="glass tilt">
+                    <span class="date">2023 – 2026</span>
+                    <h3>BUT Science des Données</h3>
+                    <p>Spécialisation en <strong>analyse statistique</strong>. SQL, Python et R pour traiter des données complexes.</p>
+                </div>
+            </div>
+            <div class="road-step reveal">
+                <span class="road-num">02</span>
+                <div class="glass tilt">
+                    <span class="date">2026 – 2028</span>
+                    <h3>Master SIGLIS en alternance</h3>
+                    <p>Deux ans en alternance chez <strong>Panneaux et Décors</strong> pour allier théorie et expérience terrain.</p>
+                </div>
+            </div>
+            <div class="road-step reveal">
+                <span class="road-num">03</span>
+                <div class="glass tilt">
+                    <span class="date">Métier visé</span>
+                    <h3>Data Analyst dans le Sport</h3>
+                    <p>Optimiser les performances sportives, notamment dans le <strong>football</strong>, grâce à l'analyse de données de capteurs et de jeu.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact">
+    <div class="wrap">
+        <p class="eyebrow reveal">06 — Contact</p>
+        <h2 class="section-title reveal">Travaillons ensemble</h2>
+        <div class="glass contact-box reveal">
+            <p>N'hésitez pas à me contacter pour toute opportunité de stage, d'alternance ou de collaboration.</p>
+            <div class="contact-links">
+                <a href="mailto:bastien.bruey40@gmail.com" class="contact-item">
+                    <span class="icon">📧</span>
+                    <div><strong>Email</strong><span>bastien.bruey40@gmail.com</span></div>
+                </a>
+                <a href="tel:+33600000000" class="contact-item">
+                    <span class="icon">📞</span>
+                    <div><strong>Téléphone</strong><span>06 09 52 ** **</span></div>
+                </a>
+                <a href="https://www.linkedin.com/in/bruey-bastien-56b3832a5/" target="_blank" class="contact-item">
+                    <span class="icon">🔗</span>
+                    <div><strong>LinkedIn</strong><span>Mon profil professionnel</span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
 
 <footer>
-    © 2025 - Portfolio de Bruey Bastien
+    <p>© 2026 — Portfolio de Bastien BRUEY</p>
+    <a href="#accueil" class="to-top">↑ Haut de page</a>
 </footer>
 
+<!-- ============ MODALE PROJET ============ -->
+<div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-box glass">
+        <button class="modal-close" data-close aria-label="Fermer">✕</button>
+        <img id="m-img" src="" alt="">
+        <div class="modal-body">
+            <span class="date" id="m-tool"></span>
+            <h3 id="m-title"></h3>
+            <div id="m-desc"></div>
+            <div class="chips" id="m-tags"></div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
