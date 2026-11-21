@@ -1,6 +1,19 @@
 /* ===== Données des projets ===== */
 const PROJECTS = [
     {
+        title: "Application Web & Stats – FC Chalosse",
+        tool: "HTML, CSS, JavaScript & Supabase (PWA)",
+        img: "chalosse.webp",
+        short: "Application web mobile (PWA) de suivi des matchs, statistiques, compositions et votes pour le club de football FC Chalosse.",
+        desc: [
+            "Gestion du calendrier, des scores et du détail des matchs (équipes première et réserve)",
+            "Suivi de l'effectif, création des compositions d'équipe et statistiques de la saison",
+            "Notation des joueurs après chaque rencontre et classement de l'Homme du match",
+            "Authentification, gestion des comptes avec Supabase et application installable (PWA) — accès réservé au club"
+        ],
+        tags: ["JavaScript", "HTML / CSS", "Supabase", "PWA", "Sports Data"]
+    },
+    {
         title: "Automatisation d'un site web en fichier Excel",
         tool: "Excel (VBA) & SQL",
         img: "RapportInterventions.png",
